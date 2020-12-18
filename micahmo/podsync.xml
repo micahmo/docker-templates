@@ -7,6 +7,7 @@
   <Repository>mxpv/podsync</Repository>
   <BindTime>true</BindTime>
   <Privileged>false</Privileged>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
   <Networking>
     <Mode>bridge</Mode>
     <Publish>
