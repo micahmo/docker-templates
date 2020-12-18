@@ -2,6 +2,7 @@
 <Container version="2">
   <Name>Podsync</Name>
   <Description>Turn YouTube or Vimeo channels, users, or playlists into podcast feeds</Description>
+  <Overview>Turn YouTube or Vimeo channels, users, or playlists into podcast feeds</Overview>
   <Registry>https://hub.docker.com/r/mxpv/podsync/</Registry>
   <Repository>mxpv/podsync</Repository>
   <BindTime>true</BindTime>
