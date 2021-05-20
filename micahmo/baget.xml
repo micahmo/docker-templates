@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container>
+    <TemplateURL>https://raw.githubusercontent.com/micahmo/docker-templates/master/micahmo/baget.xml</TemplateURL>
+    <Name>BaGet</Name>
+    <Project>https://loic-sharma.github.io/BaGet/</Project>
+    <Overview>A lightweight NuGet and symbol server</Overview>
+    <Description>A lightweight NuGet and symbol server</Description>
+    <Registry>https://registry.hub.docker.com/r/loicsharma/baget/</Registry>
+    <GitHub>https://github.com/loic-sharma/BaGet</GitHub>
+    <Repository>loicsharma/baget</Repository>
+    <Icon>https://loic-sharma.github.io/BaGet/assets/images/favicon.png</Icon>
+    <WebUI>http://[IP]:[PORT:80]/</WebUI>
+    <Networking>
+        <Mode>bridge</Mode>
+        <Publish>
+            <Port>
+                <HostPort>5555</HostPort>
+                <ContainerPort>80</ContainerPort>
+                <Protocol>tcp</Protocol>
+            </Port>
+        </Publish>
+    </Networking>
+    <Config Name="Port" Target="80" Default="5555" Mode="tcp" Description="Container Port: 80" Type="Port" Display="always" Required="true" Mask="false">5555</Config>
+    <Config Name="ApiKey" Target="ApiKey" Default="" Mode="" Description="The API Key used to publish packages" Type="Variable" Display="always" Required="true" Mask="false"/>
+    <Config Name="Storage__Type" Target="Storage__Type" Default="FileSystem" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false"/>
+    <Config Name="Storage__Path" Target="Storage__Path" Default="/var/baget/packages" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false"/>
+    <Config Name="Database__Type" Target="Database__Type" Default="Sqlite" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false"/>
+    <Config Name="Database__ConnectionString" Target="Database__ConnectionString" Default="Data Source=/var/baget/baget.db" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false"/>
+    <Config Name="Search__Type" Target="Search__Type" Default="Database" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false"/>
+    <Config Type="Path" Name="Data directory" Target="/var/baget" Default="/mnt/user/appdata/baget" Mode="rw" Description="This will be used by BaGet to persist its state."></Config>
+</Container>
