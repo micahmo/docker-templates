@@ -10,6 +10,9 @@
     <Repository>loicsharma/baget</Repository>
     <Icon>https://loic-sharma.github.io/BaGet/assets/images/favicon.png</Icon>
     <WebUI>http://[IP]:[PORT:80]/</WebUI>
+    <Networking>
+        <Mode>bridge</Mode>
+    </Networking>
     <Config Name="Port" Target="80" Default="5555" Mode="tcp" Description="Container Port: 80" Type="Port" Display="always" Required="true" Mask="false">5555</Config>
     <Config Name="ApiKey" Target="ApiKey" Default="" Mode="" Description="The API Key used to publish packages" Type="Variable" Display="always" Required="true" Mask="false"/>
     <Config Name="Storage__Type" Target="Storage__Type" Default="FileSystem" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false"/>
