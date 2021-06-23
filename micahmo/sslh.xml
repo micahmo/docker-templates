@@ -24,6 +24,7 @@
   <Config Type="Variable" Name="LISTEN_IP" Target="LISTEN_IP" Default="0.0.0.0" Description="" Mask="false" Display="always" Required="true">0.0.0.0</Config>
   <Config Type="Variable" Name="LISTEN_PORT" Target="LISTEN_PORT" Default="443" Description="" Mask="false" Display="always" Required="true">443</Config>
   <Config Type="Variable" Name="SSH_HOST" Target="SSH_HOST" Default="localhost" Description="" Mask="false" Display="always" Required="true">localhost</Config>
+  <Config Type="Variable" Name="SSH_PORT" Target="SSH_PORT" Default="22" Description="" Mask="false" Display="always" Required="true">22</Config>
   <Config Type="Variable" Name="OPENVPN_HOST" Target="OPENVPN_HOST" Default="localhost" Description="" Mask="false" Display="always" Required="true">localhost</Config>
   <Config Type="Variable" Name="OPENVPN_PORT" Target="OPENVPN_PORT" Default="1194" Description="" Mask="false" Display="always" Required="true">1194</Config>
   <Config Type="Variable" Name="HTTPS_HOST" Target="HTTPS_HOST" Default="localhost" Description="" Mask="false" Display="always" Required="true">localhost</Config>
