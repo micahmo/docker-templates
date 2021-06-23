@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container version="2">
+  <Name>sslh</Name>
+  <Description>Applicative Protocol Multiplexer (e.g. share SSH and HTTPS on the same port)</Description>
+  <Overview>Applicative Protocol Multiplexer (e.g. share SSH and HTTPS on the same port)</Overview>
+  <Registry>https://hub.docker.com/r/oorabona/sslh</Registry>
+  <Repository>oorabona/sslh</Repository>
+  <BindTime>true</BindTime>
+  <Privileged>false</Privileged>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>1443</HostPort>
+        <ContainerPort>443</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Environment/>
+  <Config Name="Port" Target="443" Default="1443" Mode="tcp" Description="Container Port: 443" Type="Port" Display="always" Required="true" Mask="false">1443</Config>
+  <Config Type="Variable" Name="LISTEN_IP" Target="LISTEN_IP" Default="0.0.0.0" Description="" Mask="false" Display="always" Required="true">0.0.0.0</Config>
+  <Config Type="Variable" Name="LISTEN_PORT" Target="LISTEN_PORT" Default="443" Description="" Mask="false" Display="always" Required="true">443</Config>
+  <Config Type="Variable" Name="SSH_HOST" Target="SSH_HOST" Default="localhost" Description="" Mask="false" Display="always" Required="true">localhost</Config>
+  <Config Type="Variable" Name="OPENVPN_HOST" Target="OPENVPN_HOST" Default="localhost" Description="" Mask="false" Display="always" Required="true">22</Config>
+  <Config Type="Variable" Name="OPENVPN_PORT" Target="OPENVPN_PORT" Default="1194" Description="" Mask="false" Display="always" Required="true">1194</Config>
+  <Config Type="Variable" Name="HTTPS_HOST" Target="HTTPS_HOST" Default="localhost" Description="" Mask="false" Display="always" Required="true">localhost</Config>
+  <Config Type="Variable" Name="HTTPS_PORT" Target="HTTPS_PORT" Default="8443" Description="" Mask="false" Display="always" Required="true">8443</Config>
+  <Icon>https://www.rutschle.net/img/usagi.png</Icon>
+</Container>
