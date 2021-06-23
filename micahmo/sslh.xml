@@ -17,6 +17,7 @@
       </Port>
     </Publish>
   </Networking>
+  <ExtraParams>-f</ExtraParams>
   <Environment/>
   <Config Name="Port" Target="443" Default="1443" Mode="tcp" Description="Container Port: 443" Type="Port" Display="always" Required="true" Mask="false">1443</Config>
   <Config Type="Variable" Name="LISTEN_IP" Target="LISTEN_IP" Default="0.0.0.0" Description="" Mask="false" Display="always" Required="true">0.0.0.0</Config>
