@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container>
+    <TemplateURL>https://raw.githubusercontent.com/micahmo/docker-templates/master/micahmo/FlareSolverr.xml</TemplateURL>
+    <Name>FlareSolverr</Name>
+    <Project>https://github.com/FlareSolverr/FlareSolverr</Project>
+    <Overview>
+        Proxy server to bypass Cloudflare protection
+    </Overview>
+    <Description>
+        FlareSolverr is a proxy server to bypass Cloudflare protection.
+    </Description>
+    <Registry>https://hub.docker.com/r/flaresolverr/flaresolverr</Registry>
+    <GitHub>https://github.com/FlareSolverr/FlareSolverr</GitHub>
+    <Repository>flaresolverr/flaresolverr</Repository>
+    <Icon>https://avatars.githubusercontent.com/u/75936191?s=200</Icon>
+    <Networking>
+        <Mode>bridge</Mode>
+    </Networking>
+    <Config Name="Port" Target="8191" Default="8191" Mode="tcp" Description="Container Port: 8191" Type="Port" Display="always" Required="true" Mask="false">8191</Config>
+    <Config Name="Log Level" Target="LOG_LEVEL" Default="info" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false">info</Config>
+</Container>
