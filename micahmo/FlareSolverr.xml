@@ -22,5 +22,5 @@
     <Config Name="Captcha Solver" Target="CAPTCHA_SOLVER" Default="none" Mode="" Description="Captcha solving method. It is used when a captcha is encountered. See https://github.com/FlareSolverr/FlareSolverr#captcha-solvers" Type="Variable" Display="always" Required="true" Mask="false">none</Config>
     <Config Name="TimeZone" Target="TZ" Default="UTC" Mode="" Description="Timezone used in the logs and the web browser. Example: TZ=Europe/London." Type="Variable" Display="always" Required="true" Mask="false">UTC</Config>
     <Config Name="Headless" Target="HEADLESS" Default="true" Mode="" Description="Only for debugging. To run the web browser in headless mode or visible." Type="Variable" Display="always" Required="true" Mask="false">true</Config>
-    <Config Type="Path" Name="Captcha Directory" Target="/home/node/flaresolverr/src/captcha" Default="/mnt/user/appdata/FlareSolverr/captcha" Mode="rw" Description="The folder to modify captcha poviders." Required="true">/mnt/user/appdata/FlareSolverr/captcha</Config>
+    <!-- <Config Type="Path" Name="Captcha Directory" Target="/home/node/flaresolverr/src/captcha" Default="/mnt/user/appdata/FlareSolverr/captcha" Mode="rw" Description="The folder to modify captcha poviders." Required="true">/mnt/user/appdata/FlareSolverr/captcha</Config> -->
 </Container>
