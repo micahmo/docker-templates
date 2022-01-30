@@ -23,6 +23,6 @@
   <Config Type="Path" Name="Storage Directory" Target="/app/data" Default="/mnt/user/Media/podsync" Mode="rw" Description="The folder to save podsync's data (container path /app/data)" Required="true">/mnt/user/Media/podsync</Config>
   <Config Type="Path" Name="Config Directory" Target="/app/config" Default="/mnt/user/appdata/podsync/config" Mode="rw" Description="The folder to save podsync's config (container path /app/config)" Required="true">/mnt/user/appdata/podsync/config</Config>
   <Config Type="Variable" Name="Config Path" Target="PODSYNC_CONFIG_PATH" Default="/app/config/config.toml" Description="The location of the config file (in the container)" Mask="false" Display="always" Required="true">/app/config/config.toml</Config>
-  <Icon>https://github.com/mxpv/podsync/raw/master/docs/img/logo.png</Icon>
+  <Icon>https://raw.githubusercontent.com/mxpv/podsync/main/docs/img/logo.png</Icon>
   <ExtraParams></ExtraParams>
 </Container>
