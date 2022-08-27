@@ -4,7 +4,7 @@
   <Description>Augments plex's built in intro detection, additionally detecting credits.</Description>
   <Overview>Augments plex's built in intro detection, additionally detecting credits.</Overview>
   <Registry>https://hub.docker.com/r/cjmanca/plex-credits-detect</Registry>
-  <Repository>cjmanca/plex-credits-detect:main</Repository>
+  <Repository>cjmanca/plex-credits-detect:develop</Repository>
   <Config Type="Path" Name="Config" Target="/config" Default="/mnt/user/appdata/plex-credits-detect" Mode="rw" Description="Configuration Directory" Required="true">/mnt/user/appdata/plex-credits-detect</Config>
   <Config Type="Path" Name="PlexDB" Target="/PlexDB" Default="/mnt/user/appdata/Plex-Media-Server/Library/Application Support/Plex Media Server/Plug-in Support/Databases" Mode="rw" Description="Plex Database Directory" Required="true">/mnt/user/appdata/Plex-Media-Server/Library/Application Support/Plex Media Server/Plug-in Support/Databases</Config>
   <Config Type="Path" Name="Media" Target="/data" Default="" Mode="rw" Description="Plex Media Directory" Required="true"></Config>
