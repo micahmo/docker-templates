@@ -14,5 +14,6 @@
         <Mode>bridge</Mode>
     </Networking>
     <Config Name="Port" Target="5000" Default="5000" Mode="tcp" Description="Container Port: 5000" Type="Port" Display="always" Required="true" Mask="false">5000</Config>
-    <Config Type="Path" Name="Data directory" Target="/data" Default="/mnt/user/appdata/dufs" Mode="rw"></Config>
+    <Config Type="Path" Name="Data directory" Target="/data" Default="/mnt/user/appdata/dufs" Mode="rw" Description="The directory to share"></Config>
+    <PostArgs>/data</PostArgs>
 </Container>
