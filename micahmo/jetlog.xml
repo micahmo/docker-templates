@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container>
+    <TemplateURL>https://raw.githubusercontent.com/micahmo/docker-templates/master/micahmo/jetlog.xml</TemplateURL>
+    <Name>Jetlog</Name>
+    <Project>https://github.com/pbogre/jetlog</Project>
+    <Overview>Personal flight tracker and viewer</Overview>
+    <Description>Personal flight tracker and viewer</Description>
+    <Registry>https://registry.hub.docker.com/r/pbogre/jetlog</Registry>
+    <GitHub>https://github.com/pbogre/jetlog</GitHub>
+    <Repository>pbogre/jetlog</Repository>
+    <Icon>https://raw.githubusercontent.com/pbogre/jetlog/master/logo.png</Icon>
+    <WebUI>http://[IP]:[PORT:3000]/</WebUI>
+    <Networking>
+        <Mode>bridge</Mode>
+    </Networking>
+    <Config Name="Port" Target="3000" Default="3000" Mode="tcp" Description="Container Port: 3000" Type="Port" Display="always" Required="true" Mask="false">3000</Config>
+    <Config Type="Path" Name="Data Path" Target="/data" Default="/mnt/user/appdata/jetlog" Mode="rw" Description="The path where Jetlog will store its data." Required="true">/mnt/user/appdata/jetlog</Config>
+</Container>
