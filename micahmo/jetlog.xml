@@ -8,7 +8,7 @@
     <Registry>https://registry.hub.docker.com/r/pbogre/jetlog</Registry>
     <GitHub>https://github.com/pbogre/jetlog</GitHub>
     <Repository>pbogre/jetlog</Repository>
-    <Icon>https://raw.githubusercontent.com/pbogre/jetlog/master/logo.png</Icon>
+    <Icon>https://raw.githubusercontent.com/pbogre/jetlog/main/client/public/favicon.png</Icon>
     <WebUI>http://[IP]:[PORT:3000]/</WebUI>
     <Networking>
         <Mode>bridge</Mode>
