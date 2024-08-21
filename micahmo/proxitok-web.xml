@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container>
+    <Name>ProxiTok Web</Name>
+    <Project>https://github.com/pablouser1/ProxiTok</Project>
+    <Overview>ProxiTok is a self-hosted alternative front end for TikTok.</Overview>
+    <Registry>https://ghcr.io/pablouser1/proxitok</Registry>
+    <Repository>ghcr.io/pablouser1/proxitok:master</Repository>
+    <Icon>https://raw.githubusercontent.com/pablouser1/ProxiTok/master/favicon-32x32.png</Icon>
+    <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+    <Networking>
+        <Mode>bridge</Mode>
+        <Publish>
+            <Port>
+                <HostPort>8080</HostPort>
+                <ContainerPort>8080</ContainerPort>
+                <Protocol>tcp</Protocol>
+            </Port>
+        </Publish>
+    </Networking>
+    <Config Name="LATTE Cache Directory" Target="LATTE_CACHE" Default="/cache" Mode="" Description="Directory used for caching." Type="Variable" Display="always" Required="true" Mask="false">/cache</Config>
+    <Config Name="API Cache" Target="API_CACHE" Default="redis" Mode="" Description="Caching method for the API." Type="Variable" Display="always" Required="true" Mask="false">redis</Config>
+    <Config Name="Redis Host" Target="REDIS_HOST" Default="redis" Mode="" Description="Host address for Redis." Type="Variable" Display="always" Required="true" Mask="false">redis</Config>
+    <Config Name="Redis Port" Target="REDIS_PORT" Default="6379" Mode="" Description="Port for Redis." Type="Variable" Display="always" Required="true" Mask="false">6379</Config>
+    <Config Name="Chromedriver URL" Target="API_CHROMEDRIVER" Default="http://proxitok-chromedriver:9515" Mode="" Description="URL for the Chromedriver API." Type="Variable" Display="always" Required="true" Mask="false">http://proxitok-chromedriver:9515</Config>
+    <Config Type="Path" Name="Cache Directory" Target="/cache" Default="/mnt/user/appdata/proxitok/cache" Mode="rw" Description="Directory used for caching."/>
+    <SecurityOpt>
+        <Option>no-new-privileges:true</Option>
+    </SecurityOpt>
+    <CapAdd>
+        <Capability>CHOWN</Capability>
+        <Capability>SETGID</Capability>
+        <Capability>SETUID</Capability>
+    </CapAdd>
+    <CapDrop>
+        <Capability>ALL</Capability>
+    </CapDrop>
+    <RestartPolicy>unless-stopped</RestartPolicy>
+</Container>

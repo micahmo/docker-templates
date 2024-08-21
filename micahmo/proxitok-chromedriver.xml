@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container>
+    <Name>ProxiTok Chromedriver</Name>
+    <Project>https://github.com/Zenika/alpine-chrome</Project>
+    <Overview>Chromedriver used by ProxiTok for sending requests to TikTok.</Overview>
+    <Registry>https://hub.docker.com/r/zenika/alpine-chrome</Registry>
+    <Repository>zenika/alpine-chrome:with-chromedriver</Repository>
+    <Icon>https://raw.githubusercontent.com/pablouser1/ProxiTok/master/favicon-32x32.png</Icon>
+    <Networking>
+        <Mode>bridge</Mode>
+    </Networking>
+    <!-- <SecurityOpt>
+        <Option>seccomp:./misc/setup/docker/chrome.json</Option>
+    </SecurityOpt> -->
+    <RestartPolicy>unless-stopped</RestartPolicy>
+</Container>
