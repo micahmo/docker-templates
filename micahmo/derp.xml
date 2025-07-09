@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container>
+    <Name>DERP</Name>
+    <Project>https://github.com/tailscale/tailscale</Project>
+    <Overview>
+        DERP (Designated Encrypted Relay for Packets) server for Tailscale mesh relay.
+    </Overview>
+    <Description>
+        DERP is used as a relay for Tailscale nodes that cannot make direct connections. This container runs a DERP server using the fredliang/derper image.
+    </Description>
+    <Registry>https://hub.docker.com/r/fredliang/derper</Registry>
+    <Repository>fredliang/derper</Repository>
+    <!-- <Icon>https://avatars.githubusercontent.com/u/64702?s=200</Icon> -->
+    <WebUI>http://[IP]:[PORT:80]/</WebUI>
+    <Networking>
+        <Mode>bridge</Mode>
+    </Networking>
+    <Config Name="HTTP Port" Target="DERP_HTTP_PORT" Default="-1" Mode="" Description="Set to -1 to disable HTTP listener." Type="Variable" Display="always" Required="true" Mask="false">-1</Config>
+    <Config Name="DERP Domain" Target="DERP_DOMAIN" Default="" Mode="" Description="Domain for this DERP server." Type="Variable" Display="always" Required="true" Mask="false"></Config>
+    <Config Name="Address" Target="DERP_ADDR" Default=":80" Mode="" Description="Listening address for DERP server." Type="Variable" Display="always" Required="true" Mask="false">:80</Config>
+    <Config Name="Port 80" Target="80" Default="8080" Mode="tcp" Description="Container Port: 80 (DERP address)" Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+    <Config Name="Port 443" Target="443" Default="8443" Mode="tcp" Description="Container Port: 443 (TLS)" Type="Port" Display="always" Required="true" Mask="false">8443</Config>
+    <Config Name="Port 3478" Target="3478" Default="3478" Mode="udp" Description="Container Port: 3478 (STUN/UDP)" Type="Port" Display="always" Required="true" Mask="false">3478</Config>
+    <RestartPolicy>unless-stopped</RestartPolicy>
+</Container>
