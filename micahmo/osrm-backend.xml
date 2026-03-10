@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container version="2">
+    <TemplateURL>https://raw.githubusercontent.com/micahmo/docker-templates/master/micahmo/osrm-backend.xml</TemplateURL>
+    <Name>OSRM Backend</Name>
+    <Project>https://github.com/Project-OSRM/osrm-backend</Project>
+    <Overview>High performance routing engine written in C++ designed to run on OpenStreetMap data. Provides Nearest, Route, Table, Match, Trip, and Tile services via HTTP API.
+
+SETUP REQUIRED: OSM data must be downloaded and pre-processed before the container will start successfully. Place the pre-processed .osrm files in the Data Path directory, then update the PostArgs to reference the correct .osrm base path.
+
+Pre-processing steps (MLD pipeline, using the car profile as an example):
+  docker run --rm -v /mnt/user/appdata/osrm-backend:/data ghcr.io/project-osrm/osrm-backend osrm-extract -p /opt/car.lua /data/north-america-latest.osm.pbf
+  docker run --rm -v /mnt/user/appdata/osrm-backend:/data ghcr.io/project-osrm/osrm-backend osrm-partition /data/region.osrm
+  docker run --rm -v /mnt/user/appdata/osrm-backend:/data ghcr.io/project-osrm/osrm-backend osrm-customize /data/region.osrm
+
+OSM extracts can be downloaded from https://download.geofabrik.de. Other available profiles: /opt/foot.lua, /opt/bicycle.lua</Overview>
+    <Description>High performance routing engine written in C++ designed to run on OpenStreetMap data. Provides Nearest, Route, Table, Match, Trip, and Tile services via HTTP API. OSM data must be downloaded and pre-processed before starting — see the Overview for setup steps.</Description>
+    <Registry>https://ghcr.io/project-osrm/osrm-backend</Registry>
+    <GitHub>https://github.com/Project-OSRM/osrm-backend</GitHub>
+    <Repository>ghcr.io/project-osrm/osrm-backend:latest</Repository>
+    <Icon>https://github.com/Project-OSRM.png</Icon>
+    <WebUI>http://[IP]:[PORT:5000]/</WebUI>
+    <Networking>
+        <Mode>bridge</Mode>
+    </Networking>
+    <PostArgs>osrm-routed --algorithm mld /data/map.osrm</PostArgs>
+    <Config Name="Port" Target="5000" Default="5000" Mode="tcp" Description="Container Port: 5000" Type="Port" Display="always" Required="true" Mask="false">5000</Config>
+    <Config Type="Path" Name="Data Path" Target="/data" Default="/mnt/user/appdata/osrm-backend" Mode="rw" Description="Path to the directory containing the pre-processed OSRM data files (.osrm.*)." Required="true">/mnt/user/appdata/osrm-backend</Config>
+    <RestartPolicy>unless-stopped</RestartPolicy>
+</Container>
