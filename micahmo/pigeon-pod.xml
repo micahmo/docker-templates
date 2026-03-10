@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container>
+    <TemplateURL>https://raw.githubusercontent.com/micahmo/docker-templates/master/micahmo/pigeon-pod.xml</TemplateURL>
+    <Name>Pigeon Pod</Name>
+    <Project>https://github.com/aizhimou/pigeon-pod</Project>
+    <Overview>Podcast hosting/serving application (Pigeon Pod)</Overview>
+    <Description>Pigeon Pod - simple podcast host.</Description>
+    <Registry>https://github.com/aizhimou/pigeon-pod/pkgs/container/pigeon-pod</Registry>
+    <Repository>ghcr.io/aizhimou/pigeon-pod</Repository>
+    <Icon>https://raw.githubusercontent.com/aizhimou/pigeon-pod/main/frontend/src/assets/pigeon.png</Icon>
+    <WebUI>http://[IP]:[PORT:8834]/</WebUI>
+    <Networking>
+        <Mode>bridge</Mode>
+    </Networking>
+    <Config Name="Port" Target="8080" Default="8834" Mode="tcp" Description="Container Port: 8080" Type="Port" Display="always" Required="true" Mask="false">8834</Config>
+    <Config Name="PIGEON_BASE_URL" Target="PIGEON_BASE_URL" Default="https://pigeonpod.example.com" Mode="" Description="Base URL for your Pigeon Pod instance (set to your domain)" Type="Variable" Display="always" Required="true" Mask="false">https://pigeonpod.example.com</Config>
+    <Config Name="PIGEON_AUDIO_FILE_PATH" Target="PIGEON_AUDIO_FILE_PATH" Default="/data/audio/" Mode="" Description="Path inside container to audio files" Type="Variable" Display="always" Required="true" Mask="false">/data/audio/</Config>
+    <Config Name="SPRING_DATASOURCE_URL" Target="SPRING_DATASOURCE_URL" Default="jdbc:sqlite:/data/pigeon-pod.db" Mode="" Description="JDBC datasource URL for the application (sqlite compatible)" Type="Variable" Display="always" Required="true" Mask="false">jdbc:sqlite:/data/pigeon-pod.db</Config>
+    <Config Type="Path" Name="Data directory" Target="/data" Default="/mnt/user/appdata/pigeon-pod" Mode="rw" Description="Directory used to store database and audio files."></Config>
+    <RestartPolicy>unless-stopped</RestartPolicy>
+</Container>
