@@ -17,7 +17,7 @@ OSM extracts can be downloaded from https://download.geofabrik.de. Other availab
     <Registry>https://ghcr.io/project-osrm/osrm-backend</Registry>
     <GitHub>https://github.com/Project-OSRM/osrm-backend</GitHub>
     <Repository>ghcr.io/project-osrm/osrm-backend:latest</Repository>
-    <Icon>https://github.com/Project-OSRM.png</Icon>
+    <Icon>https://avatars.githubusercontent.com/u/8207060?s=200</Icon>
     <WebUI>http://[IP]:[PORT:5000]/</WebUI>
     <Networking>
         <Mode>bridge</Mode>
