@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container>
+    <TemplateURL>https://raw.githubusercontent.com/micahmo/docker-templates/master/micahmo/socks5-proxy.xml</TemplateURL>
+    <Name>SOCKS5 Proxy</Name>
+    <Project>https://github.com/serjs/socks5-server</Project>
+    <Overview>Lightweight SOCKS5 proxy server with optional username/password authentication. Leave PROXY_USER and PROXY_PASSWORD empty to allow unauthenticated access (LAN only — do NOT expose unauthenticated to WAN).</Overview>
+    <Description>Lightweight SOCKS5 proxy server with optional username/password authentication.</Description>
+    <Registry>https://hub.docker.com/r/serjs/go-socks5-proxy</Registry>
+    <GitHub>https://github.com/serjs/socks5-server</GitHub>
+    <Repository>serjs/go-socks5-proxy</Repository>
+    <Icon>https://raw.githubusercontent.com/serjs/socks5-server/master/logo.png</Icon>
+    <Networking>
+        <Mode>bridge</Mode>
+    </Networking>
+    <Config Name="Port" Target="1080" Default="1080" Mode="tcp" Description="SOCKS5 proxy listen port." Type="Port" Display="always" Required="true" Mask="false">1080</Config>
+    <Config Name="Username" Target="PROXY_USER" Default="" Mode="" Description="Username for SOCKS5 authentication. Leave blank for no auth (LAN use only)." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+    <Config Name="Password" Target="PROXY_PASSWORD" Default="" Mode="" Description="Password for SOCKS5 authentication. Leave blank for no auth (LAN use only)." Type="Variable" Display="always" Required="false" Mask="true"></Config>
+    <Config Name="Require Auth" Target="REQUIRE_AUTH" Default="true" Mode="" Description="Set to false to allow unauthenticated access. Only disable if access is restricted by network (e.g. Tailscale/VPN)." Type="Variable" Display="always" Required="true" Mask="false">true</Config>
+    <Config Name="Allowed Destination IPs" Target="PROXY_ALLOWED_DEST_FQDN" Default="" Mode="" Description="Optional comma-separated list of allowed destination FQDNs/IPs. Leave blank to allow all destinations." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+    <RestartPolicy>unless-stopped</RestartPolicy>
+</Container>
