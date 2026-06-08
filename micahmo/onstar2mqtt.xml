@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container>
+    <TemplateURL>https://raw.githubusercontent.com/micahmo/docker-templates/master/micahmo/onstar2mqtt.xml</TemplateURL>
+    <Name>OnStar2MQTT</Name>
+    <Project>https://github.com/BigThunderSR/onstar2mqtt</Project>
+    <Overview>OnStar to MQTT bridge. Publishes vehicle data and enables remote commands via MQTT/Home Assistant. Deploy once per vehicle, changing the container name each time.</Overview>
+    <Description>OnStar to MQTT bridge. Publishes vehicle data and enables remote commands via MQTT/Home Assistant.</Description>
+    <Registry>https://github.com/BigThunderSR/onstar2mqtt/pkgs/container/onstar2mqtt</Registry>
+    <GitHub>https://github.com/BigThunderSR/onstar2mqtt</GitHub>
+    <Repository>ghcr.io/bigthundersr/onstar2mqtt:latest</Repository>
+    <Icon>https://brands.home-assistant.io/_/onstar2mqtt/icon.png</Icon>
+    <Networking>
+        <Mode>bridge</Mode>
+    </Networking>
+    <Config Name="ONSTAR_DEVICEID" Target="ONSTAR_DEVICEID" Default="" Mode="" Description="A generated v4 UUID uniquely identifying this vehicle connection. Generate one at uuidgenerator.net. Must be unique per vehicle." Type="Variable" Display="always" Required="true" Mask="false"></Config>
+    <Config Name="ONSTAR_VIN" Target="ONSTAR_VIN" Default="" Mode="" Description="VIN of the vehicle." Type="Variable" Display="always" Required="true" Mask="false"></Config>
+    <Config Name="ONSTAR_USERNAME" Target="ONSTAR_USERNAME" Default="" Mode="" Description="myChevrolet / OnStar account email address." Type="Variable" Display="always" Required="true" Mask="false"></Config>
+    <Config Name="ONSTAR_PASSWORD" Target="ONSTAR_PASSWORD" Default="" Mode="" Description="myChevrolet / OnStar account password." Type="Variable" Display="always" Required="true" Mask="true"></Config>
+    <Config Name="ONSTAR_PIN" Target="ONSTAR_PIN" Default="" Mode="" Description="4-digit OnStar PIN used for remote commands." Type="Variable" Display="always" Required="true" Mask="true"></Config>
+    <Config Name="ONSTAR_TOTP" Target="ONSTAR_TOTP" Default="" Mode="" Description="TOTP seed key from OnStar two-factor authentication setup. Found when enrolling an authenticator app in your OnStar account security settings." Type="Variable" Display="always" Required="true" Mask="true"></Config>
+    <Config Name="MQTT_HOST" Target="MQTT_HOST" Default="10.12.11.4" Mode="" Description="Hostname or IP of the MQTT broker." Type="Variable" Display="always" Required="true" Mask="false">10.12.11.4</Config>
+    <Config Name="MQTT_PORT" Target="MQTT_PORT" Default="1883" Mode="" Description="MQTT broker port." Type="Variable" Display="always" Required="true" Mask="false">1883</Config>
+    <Config Name="MQTT_USERNAME" Target="MQTT_USERNAME" Default="" Mode="" Description="MQTT broker username." Type="Variable" Display="always" Required="true" Mask="false"></Config>
+    <Config Name="MQTT_PASSWORD" Target="MQTT_PASSWORD" Default="" Mode="" Description="MQTT broker password." Type="Variable" Display="always" Required="true" Mask="true"></Config>
+    <Config Name="ONSTAR_REFRESH" Target="ONSTAR_REFRESH" Default="1800000" Mode="" Description="How often to poll OnStar for data, in milliseconds. Default is 30 minutes (1800000). Do not set below 1800000 or you will be rate limited." Type="Variable" Display="always" Required="true" Mask="false">1800000</Config>
+    <Config Name="ONSTAR_STATE_CACHE" Target="ONSTAR_STATE_CACHE" Default="true" Mode="" Description="Merge partial API responses with cached data to prevent Home Assistant template warnings." Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+    <RestartPolicy>unless-stopped</RestartPolicy>
+</Container>
