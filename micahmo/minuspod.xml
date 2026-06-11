@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container>
+    <TemplateURL>https://raw.githubusercontent.com/micahmo/docker-templates/master/micahmo/minuspod.xml</TemplateURL>
+    <Name>MinusPod</Name>
+    <Project>https://github.com/ttlequals0/MinusPod</Project>
+    <Overview>Self-hosted podcast ad removal. Transcribes episodes with Whisper, uses an LLM to detect and cut ad segments, and serves modified RSS feeds and processed audio. Configured here for CPU-only operation with Groq (transcription) and OpenRouter (ad detection LLM). After first launch, set your web UI password via Settings &gt; Security — the APP_PASSWORD env var is documented by MinusPod but not implemented.</Overview>
+    <Description>Self-hosted podcast ad removal. Transcribes episodes with Whisper, uses an LLM to detect and cut ad segments, and serves modified RSS feeds and processed audio. Configured here for CPU-only operation with Groq (transcription) and OpenRouter (ad detection LLM). After first launch, set your web UI password via Settings &gt; Security — the APP_PASSWORD env var is documented by MinusPod but not implemented.</Description>
+    <Registry>https://hub.docker.com/r/ttlequals0/minuspod</Registry>
+    <GitHub>https://github.com/ttlequals0/MinusPod</GitHub>
+    <Repository>ttlequals0/minuspod:cpu</Repository>
+    <Icon>https://raw.githubusercontent.com/ttlequals0/MinusPod/main/frontend/public/icon-512.png</Icon>
+    <WebUI>http://[IP]:[PORT:8000]/ui/</WebUI>
+    <Networking>
+        <Mode>bridge</Mode>
+    </Networking>
+    <Config Name="Web UI Port" Target="8000" Default="8000" Mode="tcp" Description="Port for the MinusPod web interface and RSS feed server." Type="Port" Display="always" Required="true" Mask="false">8000</Config>
+    <Config Name="Data Path" Target="/app/data" Default="/mnt/user/appdata/minuspod" Mode="rw" Description="Where MinusPod stores its database, processed audio, and backups." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/minuspod</Config>
+
+    <!-- Server -->
+    <Config Name="Base URL" Target="BASE_URL" Default="" Mode="" Description="The externally-accessible URL of this server, used to generate RSS feed and audio URLs. Example: http://192.168.1.100:8000. Must match the host IP and port above." Type="Variable" Display="always" Required="true" Mask="false"></Config>
+    <Config Name="Master Passphrase" Target="MINUSPOD_MASTER_PASSPHRASE" Default="" Mode="" Description="Long random string used to encrypt API keys at rest. Pick something and don't lose it — restoring a backup requires the same passphrase." Type="Variable" Display="always" Required="true" Mask="true"></Config>
+
+    <!-- LLM: OpenRouter -->
+    <Config Name="LLM Provider" Target="LLM_PROVIDER" Default="openrouter" Mode="" Description="LLM provider for ad detection. Leave as 'openrouter' unless switching providers." Type="Variable" Display="advanced" Required="true" Mask="false">openrouter</Config>
+    <Config Name="OpenRouter API Key" Target="OPENROUTER_API_KEY" Default="" Mode="" Description="API key from openrouter.ai/keys. Used for ad detection LLM calls." Type="Variable" Display="always" Required="true" Mask="true"></Config>
+    <Config Name="LLM Model" Target="OPENAI_MODEL" Default="google/gemini-2.5-flash" Mode="" Description="OpenRouter model ID for ad detection. google/gemini-2.5-flash is the recommended production pick (fast, reliable JSON, good accuracy). Seeds the database on first startup only — change it afterwards in Settings UI." Type="Variable" Display="always" Required="true" Mask="false">google/gemini-2.5-flash</Config>
+
+    <!-- Transcription: Groq Whisper -->
+    <Config Name="Whisper Backend" Target="WHISPER_BACKEND" Default="openai-api" Mode="" Description="Set to 'openai-api' to use a remote Whisper endpoint (Groq). Leave as-is." Type="Variable" Display="advanced" Required="true" Mask="false">openai-api</Config>
+    <Config Name="Whisper API Base URL" Target="WHISPER_API_BASE_URL" Default="https://api.groq.com/openai/v1" Mode="" Description="Groq's OpenAI-compatible Whisper endpoint. Leave as-is unless using a different provider." Type="Variable" Display="advanced" Required="true" Mask="false">https://api.groq.com/openai/v1</Config>
+    <Config Name="Groq API Key" Target="WHISPER_API_KEY" Default="" Mode="" Description="API key from console.groq.com. Used for Whisper transcription." Type="Variable" Display="always" Required="true" Mask="true"></Config>
+    <Config Name="Whisper Model" Target="WHISPER_API_MODEL" Default="whisper-large-v3-turbo" Mode="" Description="Groq Whisper model. whisper-large-v3-turbo is fast and accurate for English podcasts." Type="Variable" Display="advanced" Required="false" Mask="false">whisper-large-v3-turbo</Config>
+    <Config Name="Whisper Device" Target="WHISPER_DEVICE" Default="cpu" Mode="" Description="Set to 'cpu' when using a remote Whisper API (no local GPU needed)." Type="Variable" Display="advanced" Required="false" Mask="false">cpu</Config>
+
+    <ExtraParams>--cap-drop=ALL --cap-add=SETUID --cap-add=SETGID --cap-add=CHOWN --cap-add=DAC_OVERRIDE --cap-add=FOWNER --security-opt=no-new-privileges:true</ExtraParams>
+    <RestartPolicy>unless-stopped</RestartPolicy>
+</Container>
